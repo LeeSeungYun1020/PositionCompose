@@ -16,6 +16,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.leeseungyun1020.positioncompose.locationPermissionViewModel
 
 private val permissions = arrayOf(
     Manifest.permission.ACCESS_FINE_LOCATION,
@@ -55,13 +56,13 @@ fun GrantedButton(modifier: Modifier = Modifier) {
     ) { permissions ->
         when {
             permissions.getOrDefault(Manifest.permission.ACCESS_FINE_LOCATION, false) -> {
-
+                locationPermissionViewModel.isGranted.postValue(true)
             }
             permissions.getOrDefault(Manifest.permission.ACCESS_COARSE_LOCATION, false) -> {
-
+                locationPermissionViewModel.isGranted.postValue(true)
             }
             else -> {
-                // No location access granted.
+                locationPermissionViewModel.isGranted.postValue(false)
             }
         }
     }
