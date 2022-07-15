@@ -12,7 +12,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.content.ContextCompat
 import com.leeseungyun1020.positioncompose.ui.theme.PositionComposeTheme
@@ -59,6 +58,6 @@ fun MainScreen() {
 @Composable
 fun DefaultPreview() {
     PositionComposeTheme {
-
+        MapView()
     }
 }
