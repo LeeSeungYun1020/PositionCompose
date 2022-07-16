@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.os.Looper
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.viewModels
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -32,7 +31,6 @@ val mapsViewModel = MapsViewModel()
 class MainActivity : ComponentActivity() {
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var locationCallback: LocationCallback
-    private val mapsViewModel: MapsViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -80,7 +78,10 @@ class MainActivity : ComponentActivity() {
                 override fun onLocationResult(locationResult: LocationResult) {
                     locationResult
                     for (location in locationResult.locations) {
-                        mapsViewModel.location.postValue(location)
+                        if (location != null) {
+                            mapsViewModel.latitude.postValue(location.latitude)
+                            mapsViewModel.longitude.postValue(location.longitude)
+                        }
                     }
                 }
             }

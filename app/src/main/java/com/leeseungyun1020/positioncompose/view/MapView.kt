@@ -30,18 +30,22 @@ fun MapView(modifier: Modifier = Modifier) {
                 MapProperties(maxZoomPreference = 20f, minZoomPreference = 15f)
             )
         }
-        val location by mapsViewModel.location.observeAsState()
-        val now = LatLng(location?.latitude ?: 37.503617, location?.longitude ?: 127.044844)
+        val latitude by mapsViewModel.latitude.observeAsState()
+        val longitude by mapsViewModel.longitude.observeAsState()
+        val now = LatLng(latitude ?: 37.503617, longitude ?: 127.044844)
         val pos = LatLng(37.503617, 127.044844)
         val cameraPositionState = rememberCameraPositionState {
             position = CameraPosition.fromLatLngZoom(pos, 17f)
         }
+        val origin = Location("now")
+        origin.latitude = now.latitude
+        origin.longitude = now.longitude
         val compare = Location("center")
         compare.latitude = 37.503617
         compare.longitude = 127.044844
-        val noticeText = if (location == null) {
+        val noticeText = if (latitude == null || longitude == null) {
             "Waiting"
-        } else if (location!!.distanceTo(compare) <= 100) {
+        } else if (origin.distanceTo(compare) <= 100) {
             "IN"
         } else {
             "OUT"
@@ -76,11 +80,6 @@ fun MapView(modifier: Modifier = Modifier) {
                 color = Color.White,
                 text = noticeText
             )
-            if (location == null) {
-                Text(text = "Loc ERR")
-            } else {
-                Text(text = "Loc OK")
-            }
         }
 
     }
