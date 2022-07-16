@@ -1,12 +1,17 @@
 package com.leeseungyun1020.positioncompose.view
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.google.maps.android.compose.*
@@ -27,8 +32,9 @@ fun MapView(modifier: Modifier = Modifier) {
             position = CameraPosition.fromLatLngZoom(pos, 17f)
         }
         Box(
-            modifier = Modifier.fillMaxSize()
-        ) {
+            modifier = Modifier.fillMaxSize(),
+
+            ) {
             GoogleMap(
                 properties = mapProperties,
                 cameraPositionState = cameraPositionState,
@@ -46,6 +52,15 @@ fun MapView(modifier: Modifier = Modifier) {
                     fillColor = Color(27, 115, 232, alpha = 26)
                 )
             }
+            Text(
+                modifier = Modifier
+                    .align(Alignment.TopCenter)
+                    .padding(top = 64.dp)
+                    .background(Color.Black)
+                    .padding(16.dp),
+                color = Color.White,
+                text = "Waiting"
+            )
         }
 
     }
