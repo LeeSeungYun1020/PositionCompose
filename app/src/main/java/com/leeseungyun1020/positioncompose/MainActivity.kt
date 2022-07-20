@@ -1,6 +1,7 @@
 package com.leeseungyun1020.positioncompose
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.IntentSender
 import android.content.pm.PackageManager
 import android.os.Bundle
@@ -63,10 +64,11 @@ class MainActivity : ComponentActivity() {
         }
     }
 
+    @SuppressLint("MissingPermission")
     private fun updateLocation() {
         val locationRequest = LocationRequest.create().apply {
             interval = 10000
-            fastestInterval = 5000
+            fastestInterval = 3000
             priority = Priority.PRIORITY_HIGH_ACCURACY
         }
         val builder = LocationSettingsRequest.Builder()
