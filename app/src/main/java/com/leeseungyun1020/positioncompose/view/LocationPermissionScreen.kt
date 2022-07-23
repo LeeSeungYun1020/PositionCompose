@@ -6,7 +6,6 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.LocationOn
-import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Surface
@@ -25,7 +24,7 @@ private val permissions = arrayOf(
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun LocationPermissionView(modifier: Modifier = Modifier) {
+fun LocationPermissionScreen(modifier: Modifier = Modifier) {
     Surface(
         modifier = modifier
     ) {

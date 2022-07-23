@@ -21,7 +21,7 @@ import com.leeseungyun1020.positioncompose.mapsViewModel
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun MapView(modifier: Modifier = Modifier) {
+fun MapScreen(modifier: Modifier = Modifier) {
     Surface(
         modifier = modifier
     ) {
@@ -81,6 +81,7 @@ fun MapView(modifier: Modifier = Modifier) {
                 text = noticeText
             )
         }
+
 
     }
 }
