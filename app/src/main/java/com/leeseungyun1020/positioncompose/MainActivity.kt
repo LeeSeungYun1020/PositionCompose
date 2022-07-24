@@ -21,8 +21,8 @@ import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.*
 import com.google.android.gms.tasks.Task
 import com.leeseungyun1020.positioncompose.ui.theme.PositionComposeTheme
-import com.leeseungyun1020.positioncompose.view.LocationPermissionView
-import com.leeseungyun1020.positioncompose.view.MapView
+import com.leeseungyun1020.positioncompose.view.LocationPermissionScreen
+import com.leeseungyun1020.positioncompose.view.MapScreen
 import com.leeseungyun1020.positioncompose.viewmodel.LocationPermissionViewModel
 import com.leeseungyun1020.positioncompose.viewmodel.MapsViewModel
 
@@ -114,10 +114,10 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun MainScreen() {
     val isLocationPermissionGranted by locationPermissionViewModel.isGranted.observeAsState()
-    if(isLocationPermissionGranted == true) {
-        MapView()
+    if (isLocationPermissionGranted == true) {
+        MapScreen()
     } else {
-        LocationPermissionView()
+        LocationPermissionScreen()
     }
 }
 
@@ -125,6 +125,6 @@ fun MainScreen() {
 @Composable
 fun DefaultPreview() {
     PositionComposeTheme {
-        MapView()
+        MapScreen()
     }
 }
